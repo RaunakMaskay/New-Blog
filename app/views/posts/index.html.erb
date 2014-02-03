@@ -1,0 +1,27 @@
+
+<h2>Listing Posts</h2>
+
+
+<h3>Total : <%= @posts.size %> </h3>
+<table width="40%">
+	<thead>
+	<th>Name</th>
+	<th>Title</th>
+	<th>Content</th>
+</thead>
+	<tbody>
+
+	<% for post in @posts %>
+		<tr>
+			<td><%= print_name_in_reverse(post.name) %></td>
+			<td><%= post.title %></td>
+			<td><%= post.context %></td>
+			<td><%= link_to 'View', post_path(post) %></td>
+			<td><%= link_to 'Edit', edit_post_path(post) %></td>
+			<td><%= link_to 'Delete', post_path(post), :method => 'delete'%></td>
+		</tr>
+	<% end %>
+	</tbody>	
+</table>
+
+<%= link_to 'Add Post', new_post_path %>
